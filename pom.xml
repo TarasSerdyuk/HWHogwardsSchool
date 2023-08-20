@@ -17,6 +17,25 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+			<!--        сваггер-->
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-ui</artifactId>
+				<version>1.6.3</version>
+			</dependency>
+
+			<!--    зависимость для работы с Postgresql, можно увидеть запросы к БД-->
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>42.3.2</version>
+			</dependency>
+
+			<!--    для @Entity, @ID, @GeneratedValue -->
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>javax.persistence-api</artifactId>
+			</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
