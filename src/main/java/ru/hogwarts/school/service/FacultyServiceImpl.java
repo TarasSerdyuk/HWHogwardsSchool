@@ -23,7 +23,8 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public Faculty getFacultyById(Long id) {
-        return facultyRepository.findById(id).orElseThrow(() ->new FacultyNotFoundException( "Faculty Not Found"));
+        return facultyRepository.findById(id).
+                orElseThrow(() ->new FacultyNotFoundException( "Faculty Not Found"));
     }
 
     @Override
@@ -43,6 +44,10 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public Collection<Faculty> getFacultiesByColor(String color) {
-        return facultyRepository.findByColor(color);
+       return facultyRepository.findByColor(color);
+   }
+    @Override
+    public Collection<Faculty> findFacultyByNameOrColor(String name, String color) {
+        return facultyRepository.findFacultyByNameIgnoreCaseOrColorIgnoreCase(name, color);
     }
 }
