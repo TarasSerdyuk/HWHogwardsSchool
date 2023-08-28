@@ -40,7 +40,7 @@ public class FacultyController {
     public Collection<Faculty> getFacultiesByColor(@RequestParam String color) {
         return facultyService.getFacultiesByColor(color);
     }
-    @GetMapping // READ / GET http://localhost:8080/faculty
+    @GetMapping ("/find")// READ / GET http://localhost:8080/faculty
     public ResponseEntity findFaculties(@RequestParam(required = false) String name,
                                         @RequestParam(required = false) String color) {
         if (name != null && !name.isBlank() || color != null && !color.isBlank()) {
