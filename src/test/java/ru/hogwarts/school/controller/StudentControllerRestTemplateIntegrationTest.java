@@ -173,7 +173,6 @@ public class StudentControllerRestTemplateIntegrationTest {
         Student newStudent = newStudentResponse.getBody();
         newStudent.setAge(31);
         newStudent.setName("test student 2");
-        //Student updateStudent = new Student("test student 2", 31);
 
         HttpEntity<Student> newStudentEntity = new HttpEntity<>(newStudent, newStudentResponse.getHeaders());
 
@@ -187,18 +186,6 @@ public class StudentControllerRestTemplateIntegrationTest {
         Assertions.assertThat(studentEntity.getBody().getName()).isEqualTo(newStudent.getName());
         Assertions.assertThat(studentEntity.getBody().getAge()).isEqualTo(newStudent.getAge());
 
-//        ResponseEntity<Student> studentEntity =
-//                testRestTemplate.put("http://localhost:" + port + "/student/" + newStudent.getId(), newStudent, Student.class);
-
-//        ResponseEntity<Student> studentEntity =
-//                testRestTemplate.exchange("http://localhost:" + port + "/student/" + newStudent.getId(),
-//                        HttpMethod.PUT, updateStudent, Student.class);
-
-//        ResponseEntity<Student> studentEntity =
-//                testRestTemplate.put("http://localhost:" + port + "/student/" + newStudent.getId(), updateStudent, Student.class);
-
-//        ResponseEntity<String> response =
-//                rest.exchange(url, HttpMethod.PUT, requestEntity, MyObject.class);
     }
 
     @Test
@@ -218,7 +205,6 @@ public class StudentControllerRestTemplateIntegrationTest {
         Assertions.assertThat(studentEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(studentEntity.getBody()).isNull();
 
-//exchange(url, HttpMethod.DELETE, new HttpEntity<>(""), String.class)
     }
 
 }
