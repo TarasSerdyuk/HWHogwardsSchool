@@ -18,7 +18,7 @@ public class FacultyServiceImpl implements FacultyService {
         this.facultyRepository = facultyRepository;
     }
 
-    Logger logger = LoggerFactory.getLogger(FacultyServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(FacultyServiceImpl.class);
     @Override
     public Faculty addFaculty(Faculty faculty) {
         logger.debug("Faculty is added: {}", faculty);
