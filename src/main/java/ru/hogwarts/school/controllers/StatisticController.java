@@ -35,7 +35,7 @@ public class StatisticController {
     }
 
     @GetMapping("/number-parallel")
-    public Integer number() {
+    public int number() {
         return Stream.iterate(1, a -> a +1)
                 .parallel()
                 .limit(1_000_000)

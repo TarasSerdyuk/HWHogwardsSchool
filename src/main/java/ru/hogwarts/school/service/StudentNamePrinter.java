@@ -20,30 +20,38 @@ public class StudentNamePrinter implements Printer {
 
         System.out.println(studentList);
 
-        printName(studentList.get(0));
-        printName(studentList.get(1));
+        printName(studentList.get(count));
+        printName(studentList.get(count));
 
         new Thread(() -> {
-            printName(studentList.get(2));
-            printName(studentList.get(3));
+            printName(studentList.get(count));
+            printName(studentList.get(count));
         }).start();
 
         new Thread(() -> {
-            printName(studentList.get(4));
-            printName(studentList.get(5));
+            printName(studentList.get(count));
+            printName(studentList.get(count));
         }).start();
 
-        printName(studentList.get(6));
-        printName(studentList.get(7));
+        printName(studentList.get(count));
+        printName(studentList.get(count));
     }
 
+    //private void printName(Student student) {
+
+    public int count = 0;
+    public Object sinch = new Object();
     private void printName(Student student) {
-        //private synchronized void printName(Student student) {
-        try {
-            System.out.println(student.getName());
-            Thread.sleep(2000);
-        } catch (Exception e) {
-            System.out.println("exception");
+
+        synchronized (sinch) {
+        count++;
         }
-    }
+
+            try {
+                System.out.println(student.getName());
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                System.out.println("exception");
+            }
+        }
 }
