@@ -44,7 +44,7 @@ public class StatisticController {
                 .limit(1_000_000)
                 .reduce(0, (a, b) -> a + b );
             long duration = System.currentTimeMillis() - start;
-            System.out.println("Время выполнения кода: " + duration + " мс.");
+            System.out.println("Время выполнения кода паралельно: " + duration + " мс.");
         start = System.currentTimeMillis();
         //2 вариант
         Stream.iterate(1, a -> a +1)
@@ -52,19 +52,19 @@ public class StatisticController {
                 .limit(1_000_000)
                 .reduce(0, Integer::sum);
         duration = System.currentTimeMillis() - start;
-        System.out.println("Время выполнения кода2: " + duration + " мс.");
+        System.out.println("Время выполнения кода вариант 2 паралельно: " + duration + " мс.");
         // 3 вариант
         Stream.iterate(1, a -> a +1)
                 .limit(1_000_000)
                 .reduce(0, Integer::sum);
         duration = System.currentTimeMillis() - start;
-        System.out.println("Время выполнения кода3: " + duration + " мс.");
+        System.out.println("Время выполнения кода вариант 3: " + duration + " мс.");
         // 4 вариант
         Stream.iterate(1, a -> a +1)
                 .limit(1_000_000)
                 .reduce(0, (a, b) -> a + b );
         duration = System.currentTimeMillis() - start;
-        System.out.println("Время выполнения кода4: " + duration + " мс.");
+        System.out.println("Время выполнения кода вариант 4: " + duration + " мс.");
 
     }
 }
