@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Stream;
+import java.lang.*;
 
 @RestController
 @RequestMapping("/statistic")
@@ -35,10 +36,22 @@ public class StatisticController {
     }
 
     @GetMapping("/number-parallel")
-    public int number() {
-        return Stream.iterate(1, a -> a +1)
+
+        public void number() {
+        long start = System.currentTimeMillis();
+        Stream.iterate(1, a -> a +1)
                 .parallel()
                 .limit(1_000_000)
                 .reduce(0, (a, b) -> a + b );
+            long duration = System.currentTimeMillis() - start;
+            System.out.println("Время выполнения кода: " + duration + " мс.");
+        start = System.currentTimeMillis();
+        Stream.iterate(1, a -> a +1)
+                .parallel()
+                .limit(1_000_000)
+                .reduce(0, Integer::sum);
+        duration = System.currentTimeMillis() - start;
+        System.out.println("Время выполнения кода2: " + duration + " мс.");
+
     }
 }
