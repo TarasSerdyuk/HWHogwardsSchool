@@ -8,6 +8,7 @@ import ru.hogwarts.school.service.StatisticService;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.lang.*;
 
@@ -54,17 +55,25 @@ public class StatisticController {
         duration = System.currentTimeMillis() - start;
         System.out.println("Время выполнения кода вариант 2 паралельно: " + duration + " мс.");
         // 3 вариант
+        start = System.currentTimeMillis();
         Stream.iterate(1, a -> a +1)
                 .limit(1_000_000)
                 .reduce(0, Integer::sum);
         duration = System.currentTimeMillis() - start;
         System.out.println("Время выполнения кода вариант 3: " + duration + " мс.");
         // 4 вариант
+        start = System.currentTimeMillis();
         Stream.iterate(1, a -> a +1)
                 .limit(1_000_000)
                 .reduce(0, (a, b) -> a + b );
         duration = System.currentTimeMillis() - start;
         System.out.println("Время выполнения кода вариант 4: " + duration + " мс.");
+        // 5 вариант
+        start = System.currentTimeMillis();
+        IntStream.rangeClosed(1, 1_000_000)
+                .reduce(0, Integer::sum);
+        duration = System.currentTimeMillis() - start;
+        System.out.println("Время выполнения кода вариант 5: " + duration + " мс.");
 
     }
 }
