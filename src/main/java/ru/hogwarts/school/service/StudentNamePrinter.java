@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class StudentNamePrinter implements Printer {
     private final StudentRepository studentRepository;
-
+    private int count = 0;
     public StudentNamePrinter(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
@@ -20,30 +20,29 @@ public class StudentNamePrinter implements Printer {
 
         System.out.println(studentList);
 
-        printName(0);
-        printName(1);
+        printName(studentList);
+        printName(studentList);
 
         new Thread(() -> {
-            printName(2);
-            printName(3);
+            printName(studentList);
+            printName(studentList);
         }).start();
 
         new Thread(() -> {
-            printName(4);
-            printName(5);
+            printName(studentList);
+            printName(studentList);
         }).start();
 
-        printName(6);
-        printName(7);
+        printName(studentList);
+        printName(studentList);
     }
 
 
 
 
-    private synchronized void printName(int count) {
+    private synchronized void printName(List<Student> studentList) {
         try {
-        List<Student> students = studentRepository.findAll();
-        System.out.println(students.get(count++ %students.size()).getName());
+               System.out.println(studentList.get(count++ % studentList.size()).getName());
             Thread.sleep(2000);
         }
         catch (Exception e) {
